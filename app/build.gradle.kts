@@ -35,7 +35,7 @@ android {
 
             manifestPlaceholders += mapOf()
             manifestPlaceholders["cleartextTrafficPermitted"] = true
-            resValue("string", "nameApp", "InterRapidisimo")
+            resValue("string", "app_name", "InterRapidisimo")
             buildConfigField("String", "API_INTER_APP_PROD", "\"${rootProject.extra["apiUrlBaseProd"]}\"")
 
             //signingConfig = signingConfigs.getByName("release")
@@ -51,7 +51,7 @@ android {
             isDebuggable = true
 
             manifestPlaceholders += mapOf()
-            resValue("string", "nameApp", "InterRapidisimo[DEBUG]")
+            resValue("string", "app_name", "InterRapidisimo[DEBUG]")
             buildConfigField("String", "API_INTER_APP_DEBUG", "\"${rootProject.extra["apiUrlBaseDev"]}\"")
         }
 
@@ -95,10 +95,13 @@ dependencies {
 
     //hilt
     implementation(libs.hilt.android)
+    implementation(libs.androidx.activity)
     ksp("com.google.dagger:hilt-compiler:${rootProject.extra["hiltVersion"]}")
 
     //design style
     implementation(libs.material)
+    //splash-screen
+    implementation(libs.androidx.core.splashscreen)
 
     //test
     testImplementation(libs.junit)

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--SplashScreen Api android >11-->
+    <style name="SplashScreenTheme" parent="Theme.SplashScreen.IconBackground">
+
+        <!--Color de fondo de la pantalla de presentación. El valor predeterminado es el del tema ?attr/colorBackground-->
+        <item name="windowSplashScreenBackground">@color/background_splash</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/splash_api_android_up_30_img</item>
+        <item name="windowSplashScreenIconBackgroundColor">@color/background_splash</item>
+        <item name="windowSplashScreenAnimationDuration">10</item>
+        <item name="postSplashScreenTheme">@style/Theme.InterRapidisimo</item>
+        <!--<item name="android:windowSplashScreenBrandingImage">@drawable/splash_11_4x</item>-->
+
+    </style>
+
+</resources>
