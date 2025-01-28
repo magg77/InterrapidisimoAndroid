@@ -1,6 +1,16 @@
 plugins {
-    alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlin.android)
+    id("com.android.application")
+    id("org.jetbrains.kotlin.android")
+
+    id("com.google.devtools.ksp")
+    id("kotlin-parcelize")
+
+    id("androidx.navigation.safeargs.kotlin")
+    kotlin("plugin.serialization") version "2.0.21"
+
+    id("com.google.dagger.hilt.android")
+
+
 }
 
 android {
@@ -18,13 +28,33 @@ android {
     }
 
     buildTypes {
-        release {
-            isMinifyEnabled = false
+        getByName("release") {
+            isMinifyEnabled = true
+            isMinifyEnabled = true
+            isShrinkResources = true
+
+            manifestPlaceholders += mapOf()
+            manifestPlaceholders["cleartextTrafficPermitted"] = true
+            resValue("string", "nameApp", "InterRapidisimo")
+
+            buildConfigField("String", "API_INTER_APP_PROD", "\"${rootProject.extra["apiUrlBaseProd"]}\"")
+
+
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
         }
+
+        getByName("debug") {
+            applicationIdSuffix = ".Debug"
+            isDebuggable = true
+
+            manifestPlaceholders += mapOf()
+            resValue("string", "nameApp", "InterRapidisimo[DEBUG]")
+            buildConfigField("String", "API_INTER_APP_DEBUG", "\"${rootProject.extra["apiUrlBaseDev"]}\"")
+        }
+
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
@@ -35,19 +65,42 @@ android {
     }
     buildFeatures {
         viewBinding = true
+        buildConfig = true
     }
 }
 
 dependencies {
 
+    //core
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
-    implementation(libs.material)
+    implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.constraintlayout)
+
+    //jetpack observable
     implementation(libs.androidx.lifecycle.livedata.ktx)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
+
+    //jetpack navigation  Views/Fragments integration
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
+        // Feature module support for Fragments
+    implementation("androidx.navigation:navigation-dynamic-features-fragment:${rootProject.extra["navVersionRoot"]}")
+        // JSON serialization library, works with the Kotlin serialization plugin
+    implementation(libs.kotlinx.serialization.json)
+
+    //coroutines
+    implementation(libs.kotlinx.coroutines.android)
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:${rootProject.extra["coroutinesAndroid"]}")
+
+    //hilt
+        implementation("com.google.dagger:hilt-android:${rootProject.extra["hiltVersion"]}")
+        ksp("com.google.dagger:hilt-compiler:${rootProject.extra["hiltVersion"]}")
+
+    //design style
+    implementation(libs.material)
+
+    //test
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
