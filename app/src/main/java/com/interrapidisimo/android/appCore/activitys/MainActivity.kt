@@ -1,11 +1,10 @@
-package com.interrapidisimo.android.appCore
+package com.interrapidisimo.android.appCore.activitys
 
 import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.interrapidisimo.android.R
 import com.interrapidisimo.android.databinding.ActivityMainBinding

@@ -12,24 +12,25 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.InterRapidisimo"
         tools:targetApi="31">
-
         <activity
-            android:name=".appCore.SplashActivity"
+            android:name=".appCore.activitys.SplashActivity"
             android:exported="true"
             android:theme="@style/SplashScreenTheme"
             android:windowSoftInputMode="adjustResize">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
-            android:name=".appCore.MainActivity"
+            android:name=".appCore.activitys.AuthActivity"
+            android:exported="false"
+            android:theme="@style/Theme.InterRapidisimo" />
+        <activity
+            android:name=".appCore.activitys.MainActivity"
             android:exported="true"
-            android:theme="@style/Theme.InterRapidisimo"/>
+            android:theme="@style/Theme.InterRapidisimo" />
     </application>
 
 </manifest>
