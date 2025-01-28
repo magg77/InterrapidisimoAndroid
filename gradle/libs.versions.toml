@@ -3,6 +3,7 @@ agp = "8.8.0"
 androidGradle = "8.8.0"
 gradle = "8.0.2"
 gradleVersion = "8.12.1"
+hiltAndroid = "2.51.1"
 kotlin = "1.9.24"
 coreKtx = "1.10.1"
 junit = "4.13.2"
@@ -16,15 +17,18 @@ material = "1.10.0"
 constraintlayout = "2.1.4"
 lifecycleLivedataKtx = "2.6.1"
 lifecycleViewmodelKtx = "2.6.1"
+navigationDynamicFeaturesFragment = "2.8.5"
 navigationFragmentKtx = "2.6.0"
 navigationUiKtx = "2.6.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-lifecycle-runtime-ktx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
+androidx-navigation-dynamic-features-fragment = { module = "androidx.navigation:navigation-dynamic-features-fragment", version.ref = "navigationDynamicFeaturesFragment" }
 gradle = { module = "com.android.tools.build:gradle", version.ref = "gradle" }
 gradle-v8121 = { module = "com.android.tools.build:gradle", version.ref = "gradleVersion" }
 gradle-v880 = { module = "com.android.tools.build:gradle", version.ref = "androidGradle" }
+hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hiltAndroid" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }

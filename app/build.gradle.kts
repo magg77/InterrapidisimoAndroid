@@ -32,13 +32,14 @@ android {
             isMinifyEnabled = true
             isMinifyEnabled = true
             isShrinkResources = true
+            isDebuggable = false
 
             manifestPlaceholders += mapOf()
             manifestPlaceholders["cleartextTrafficPermitted"] = true
             resValue("string", "nameApp", "InterRapidisimo")
-
             buildConfigField("String", "API_INTER_APP_PROD", "\"${rootProject.extra["apiUrlBaseProd"]}\"")
 
+            //signingConfig = signingConfigs.getByName("release")
 
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
@@ -85,7 +86,7 @@ dependencies {
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
         // Feature module support for Fragments
-    implementation("androidx.navigation:navigation-dynamic-features-fragment:${rootProject.extra["navVersionRoot"]}")
+    implementation(libs.androidx.navigation.dynamic.features.fragment)
         // JSON serialization library, works with the Kotlin serialization plugin
     implementation(libs.kotlinx.serialization.json)
 
@@ -94,7 +95,7 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:${rootProject.extra["coroutinesAndroid"]}")
 
     //hilt
-        implementation("com.google.dagger:hilt-android:${rootProject.extra["hiltVersion"]}")
+        implementation(libs.hilt.android)
         ksp("com.google.dagger:hilt-compiler:${rootProject.extra["hiltVersion"]}")
 
     //design style

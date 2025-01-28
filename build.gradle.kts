@@ -1,6 +1,6 @@
 
 buildscript {
-    val kotlinVersionRoot by extra("1.9.0")
+    val kotlinVersionRoot by extra("2.0.21")
 
     val navVersionRoot by extra("2.8.5")
     val gsonVersion by extra("2.10")
@@ -39,8 +39,9 @@ plugins {
     id("com.android.application") version "8.8.0" apply false
     id("org.jetbrains.kotlin.android") version "1.9.24" apply false
 
-    id("com.google.devtools.ksp") version "1.9.0-1.0.12" apply false
-    id("com.google.dagger.hilt.android") version("2.44") apply false
+    //id("com.google.devtools.ksp") version "1.9.0-1.0.12" apply false
+    id("com.google.devtools.ksp") version "2.0.21-1.0.27" apply false
+    id("com.google.dagger.hilt.android") version("2.51.1") apply false
 }
 
 allprojects {
