@@ -10,7 +10,6 @@ plugins {
 
     id("com.google.dagger.hilt.android")
 
-
 }
 
 android {
@@ -95,8 +94,8 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:${rootProject.extra["coroutinesAndroid"]}")
 
     //hilt
-        implementation(libs.hilt.android)
-        ksp("com.google.dagger:hilt-compiler:${rootProject.extra["hiltVersion"]}")
+    implementation(libs.hilt.android)
+    ksp("com.google.dagger:hilt-compiler:${rootProject.extra["hiltVersion"]}")
 
     //design style
     implementation(libs.material)
