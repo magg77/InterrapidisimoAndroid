@@ -3,14 +3,11 @@ buildscript {
     val kotlinVersionRoot by extra("2.0.21")
 
     val navVersionRoot by extra("2.8.5")
-    val gsonVersion by extra("2.10")
-    val loggingInterceptor by extra("4.11.0")
     val coroutinesAndroid by extra("1.7.0")
 
     val recyclerView by extra("1.3.1")
     val recyclerviewSelection by extra("1.1.0")
 
-    val retrofit by extra("2.9.0")
     val hiltVersion by extra("2.51.1")
 
     val apiUrlBaseDev by extra("https://www.api.com./")

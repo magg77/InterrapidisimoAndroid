@@ -8,10 +8,13 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.interrapidisimo.android.R
 import com.interrapidisimo.android.databinding.FragmentFirstBinding
+import dagger.hilt.android.AndroidEntryPoint
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
+
+@AndroidEntryPoint
 class FirstFragment : Fragment() {
 
     private var _binding: FragmentFirstBinding? = null
@@ -33,6 +36,8 @@ class FirstFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        vpStoreAppControlObserver()
+
         /*binding.buttonFirst.setOnClickListener {
             findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
         }*/
@@ -42,4 +47,10 @@ class FirstFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
+    private fun vpStoreAppControlObserver() {
+        TODO("Not yet implemented")
+    }
+
+
 }

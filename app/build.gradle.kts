@@ -98,10 +98,20 @@ dependencies {
     implementation(libs.androidx.activity)
     ksp("com.google.dagger:hilt-compiler:${rootProject.extra["hiltVersion"]}")
 
+    //client retrofit network
+    implementation(libs.retrofit)
+    implementation(libs.gson)
+    implementation(libs.converter.gson)
+    implementation(libs.converter.scalars)
+    implementation (libs.okhttp)
+    implementation(libs.logging.interceptor) //log interceptor
+
     //design style
     implementation(libs.material)
     //splash-screen
     implementation(libs.androidx.core.splashscreen)
+    //show-images
+    implementation(libs.glide)
 
     //test
     testImplementation(libs.junit)
