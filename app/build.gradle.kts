@@ -29,7 +29,6 @@ android {
     buildTypes {
         getByName("release") {
             isMinifyEnabled = true
-            isMinifyEnabled = true
             isShrinkResources = true
             isDebuggable = false
 
@@ -74,6 +73,7 @@ dependencies {
     //core
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.activity)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.constraintlayout)
 
@@ -95,7 +95,6 @@ dependencies {
 
     //hilt
     implementation(libs.hilt.android)
-    implementation(libs.androidx.activity)
     ksp("com.google.dagger:hilt-compiler:${rootProject.extra["hiltVersion"]}")
 
     //client retrofit network

@@ -1,10 +1,8 @@
 [versions]
 agp = "8.8.0"
-androidGradle = "8.8.0"
 coreSplashscreen = "1.0.1"
 glide = "4.15.1"
-gradle = "8.0.2"
-gradleVersion = "8.12.1"
+gradle = "8.8.0"
 gson = "2.11.0"
 hiltAndroid = "2.51.1"
 kotlin = "1.9.24"
@@ -13,7 +11,7 @@ junit = "4.13.2"
 junitVersion = "1.1.5"
 espressoCore = "3.5.1"
 appcompat = "1.6.1"
-kotlinxCoroutinesAndroid = "1.6.4"
+kotlinxCoroutinesAndroid = "1.8.0"
 kotlinxSerializationJson = "1.7.3"
 lifecycleRuntimeKtx = "2.8.7"
 material = "1.10.0"
@@ -24,7 +22,6 @@ navigationDynamicFeaturesFragment = "2.8.5"
 navigationFragmentKtx = "2.6.0"
 navigationUiKtx = "2.6.0"
 okhttp = "4.12.0"
-orgJetbrainsKotlinAndroidGradlePlugin = "2.1.20-Beta1"
 activity = "1.8.0"
 retrofit = "2.11.0"
 
@@ -36,9 +33,7 @@ androidx-navigation-dynamic-features-fragment = { module = "androidx.navigation:
 converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
 converter-scalars = { module = "com.squareup.retrofit2:converter-scalars", version.ref = "retrofit" }
 glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
-gradle = { module = "com.android.tools.build:gradle", version.ref = "gradle" }
-gradle-v8121 = { module = "com.android.tools.build:gradle", version.ref = "gradleVersion" }
-gradle-v880 = { module = "com.android.tools.build:gradle", version.ref = "androidGradle" }
+gradle-v880 = { module = "com.android.tools.build:gradle", version.ref = "gradle" }
 gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hiltAndroid" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -55,7 +50,6 @@ androidx-lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifec
 androidx-navigation-fragment-ktx = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "navigationFragmentKtx" }
 androidx-navigation-ui-ktx = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "navigationUiKtx" }
 okhttp = { module = "com.squareup.okhttp3:okhttp", version.ref = "okhttp" }
-org-jetbrains-kotlin-android-gradle-plugin = { group = "org.jetbrains.kotlin.android", name = "org.jetbrains.kotlin.android.gradle.plugin", version.ref = "orgJetbrainsKotlinAndroidGradlePlugin" }
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
 
