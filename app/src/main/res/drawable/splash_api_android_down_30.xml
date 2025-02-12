@@ -2,7 +2,7 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android"
     android:opacity="opaque">
 
-    <item android:drawable="@color/background_splash"/>
+    <item android:drawable="@color/colorPrimary"/>
     <item android:drawable="@drawable/splash_api_android_down_30_img" android:gravity="center"/>
 
 </layer-list>

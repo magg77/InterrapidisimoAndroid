@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_centerVertical="true"
-    tools:context=".FirstFragment">
+    tools:context=".ui.home.HomeFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -35,14 +35,12 @@
             android:textAllCaps="false"
             android:textSize="18sp"
             android:textStyle="normal"
-            android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_show_header" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/til_user"
-            style="?attr/textInputOutlinedDenseStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -51,6 +49,9 @@
             app:errorEnabled="true"
             app:helperText="@string/ingresa_tu_usuario"
             app:helperTextEnabled="true"
+            style="?attr/textInputOutlinedDenseStyle"
+            app:boxStrokeColor="@color/text_input_layout"
+            app:hintTextColor="@color/text_input_layout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_show_info">
@@ -69,7 +70,6 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/til_password"
-            style="?attr/textInputOutlinedDenseStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -78,6 +78,9 @@
             app:errorEnabled="true"
             app:helperText="@string/ingresa_tu_password"
             app:helperTextEnabled="true"
+            style="?attr/textInputOutlinedDenseStyle"
+            app:boxStrokeColor="@color/text_input_layout"
+            app:hintTextColor="@color/text_input_layout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/til_user">
@@ -90,7 +93,7 @@
                 android:ems="10"
                 android:hint="@string/password"
                 android:inputType="text"
-                android:padding="8dp" />
+                android:padding="8dp"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -103,8 +106,6 @@
             android:layout_marginTop="32dp"
             android:layout_marginEnd="16dp"
             android:text="@string/next"
-            app:backgroundTint="@color/background_splash"
-            android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/til_password" />

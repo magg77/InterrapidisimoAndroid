@@ -1,4 +1,5 @@
 plugins {
+
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
 
@@ -70,32 +71,41 @@ android {
 
 dependencies {
 
-    //core
+    //  core
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.constraintlayout)
 
-    //jetpack observable
+    //  jetpack observable
     implementation(libs.androidx.lifecycle.livedata.ktx)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
 
-    //jetpack navigation  Views/Fragments integration
+    //  jetpack navigation  Views/Fragments integration
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
-        // Feature module support for Fragments
+    // Feature module support for Fragments
     implementation(libs.androidx.navigation.dynamic.features.fragment)
-        // JSON serialization library, works with the Kotlin serialization plugin
+    // JSON serialization library, works with the Kotlin serialization plugin
     implementation(libs.kotlinx.serialization.json)
 
-    //coroutines
+    //  coroutines
     implementation(libs.kotlinx.coroutines.android)
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:${rootProject.extra["coroutinesAndroid"]}")
 
-    //hilt
+    implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.androidx.navigation.dynamic.features.fragment)
+    implementation(libs.kotlinx.coroutines.android)
+    implementation(libs.kotlinx.serialization.json)
+    implementation(libs.androidx.activity)
+
+    // Hilt core
     implementation(libs.hilt.android)
-    ksp("com.google.dagger:hilt-compiler:${rootProject.extra["hiltVersion"]}")
+    ksp(libs.hilt.android.compiler)
+    // Hilt para SavedStateHandle en ViewModels
+    implementation(libs.androidx.hilt.navigation.fragment)
+
 
     //client retrofit network
     implementation(libs.retrofit)
@@ -105,15 +115,23 @@ dependencies {
     implementation (libs.okhttp)
     implementation(libs.logging.interceptor) //log interceptor
 
-    //design style
+    //  design style
     implementation(libs.material)
-    //splash-screen
+    //  splash-screen
     implementation(libs.androidx.core.splashscreen)
-    //show-images
+    //  show-images
     implementation(libs.glide)
 
-    //test
+    // To use the JUnit Extension APIs
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
+    // Kotlin extensions for androidx.test.ext.junit
+    androidTestImplementation(libs.androidx.junit.ktx)
+    testImplementation(libs.junit.jupiter)
+    testImplementation(libs.mockk)
+    testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation(libs.androidx.core.testing) // Para LiveData testing
+
     androidTestImplementation(libs.androidx.espresso.core)
+
 }

@@ -49,7 +49,7 @@ class FirstFragment : Fragment() {
     }
 
     private fun vpStoreAppControlObserver() {
-        TODO("Not yet implemented")
+        //TODO("Not yet implemented")
     }
 
 
