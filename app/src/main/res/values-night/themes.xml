@@ -13,22 +13,23 @@
         <item name="colorSecondaryContainer">@color/colorSecondaryContainer</item>
         <item name="colorOnSecondaryContainer">@color/colorOnSecondaryContainer</item>
 
-        <item name="colorTertiary">@color/colorTertiary</item>
+        <item name="colorTertiary">#73300B</item>
         <item name="colorOnTertiary">@color/colorOnTertiary</item>
-        <item name="colorTertiaryContainer">@color/colorTertiaryContainer</item>
+        <item name="colorTertiaryContainer">#AF6113</item>
         <item name="colorOnTertiaryContainer">@color/colorOnTertiaryContainer</item>
 
         <item name="background">@color/colorBackground</item>
         <item name="colorOnBackground">@color/colorOnBackground</item>
         <item name="android:windowBackground">@color/colorWindowBackground</item>
+        <item name="android:colorBackgroundFloating">#A9363BD5</item>
 
         <item name="colorSurface">@color/colorSurface</item>
         <item name="colorOnSurface">@color/colorOnSurface</item>
-        <item name="colorSurfaceVariant">@color/colorSurfaceVariant</item>
+        <item name="colorSurfaceVariant">#BA0E94</item>
         <item name="colorOnSurfaceVariant">@color/colorOnSurfaceVariant</item>
         <item name="colorSurfaceInverse">@color/colorInverseSurface</item>
         <item name="colorOnSurfaceInverse">@color/colorInverseOnSurface</item>
-        <item name="colorOutline">@color/colorOutline</item>
+        <item name="colorOutline">#E4B9B9</item>
         <item name="colorOutlineVariant">@color/colorOutlineVariant</item>
 
         <item name="colorError">@color/colorError</item>
@@ -58,9 +59,10 @@
         <!--Colores pendientes-->
         <item name="colorPrimaryVariant">#67CD00</item>
         <item name="colorSecondaryVariant">#FFEB3B</item>
-        <item name="colorPrimarySurface">#A6656A</item>
+        <item name="colorPrimarySurface">#C30513</item>
         <item name="colorOnPrimarySurface">#0021FF</item>
         <item name="chipSurfaceColor">#328132</item>
+
     </style>
 
     <!--SPLASCREEN FOR APIS <= 30 ANDROID 11-->
@@ -112,6 +114,19 @@
 
     </style>
 
+    <!-- Tema personalizado para AlertDialog -->
+    <style name="CustomAlertDialog" parent="MaterialAlertDialog.MaterialComponents">
+        <!-- Elimina la sombra que aparece en las esquinas -->
+        <item name="android:elevation">8dp</item>
+        <item name="android:background">@color/colorBackgroundFloating</item>
 
+
+        <!-- Define el color de fondo y el borde -->
+        <item name="shapeAppearanceOverlay">@style/CustomDialogShape</item>
+    </style>
+    <!-- Define la forma con esquinas redondeadas -->
+    <style name="CustomDialogShape" parent="ShapeAppearance.MaterialComponents.MediumComponent">
+        <item name="cornerSize">24dp</item> <!-- Ajusta el radio de las esquinas -->
+    </style>
 
 </resources>

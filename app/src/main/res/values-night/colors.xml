@@ -20,6 +20,7 @@
     <color name="colorBackground">#0E0221</color>
     <color name="colorOnBackground">#E6E6E6</color>
     <color name="colorWindowBackground">#070014</color>
+    <color name="colorBackgroundFloating">#873CFF</color>
 
     <color name="colorSurface">#0E0221</color>    <!--Container BottomNavigation - Container MaterialToolbar -->
     <color name="colorOnSurface">#E9E9E9</color>  <!--Text label color (inActive) BottomNavigation  8A8A8A-->

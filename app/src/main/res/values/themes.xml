@@ -22,6 +22,7 @@
         <item name="background">@color/colorBackground</item>
         <item name="colorOnBackground">@color/colorOnBackground</item>
         <item name="android:windowBackground">@color/colorWindowBackground</item>
+        <item name="android:colorBackgroundFloating">@color/colorBackgroundFloating</item>
 
         <item name="colorSurface">@color/colorSurface</item>
         <item name="colorOnSurface">@color/colorOnSurface</item>
@@ -79,11 +80,6 @@
         <item name="postSplashScreenTheme">@style/Theme.InterRapidisimo</item>
 
     </style>
-    <!-- Base application theme. -->
-    <style name="Base.Theme.InterRapidisimo" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
-    </style>
 
     <style name="DialogTheme" parent="Theme.InterRapidisimo">
         <item name="android:windowIsFloating">false</item>
@@ -118,7 +114,5 @@
         <item name="boxStrokeColor">@color/text_input_layout</item>
 
     </style>
-
-
 
 </resources>

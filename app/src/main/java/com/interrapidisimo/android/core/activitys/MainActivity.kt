@@ -1,4 +1,4 @@
-package com.interrapidisimo.android.appCore.activitys
+package com.interrapidisimo.android.core.activitys
 
 import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView

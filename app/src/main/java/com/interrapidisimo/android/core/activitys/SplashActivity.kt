@@ -1,4 +1,4 @@
-package com.interrapidisimo.android.appCore.activitys
+package com.interrapidisimo.android.core.activitys
 
 import android.content.Intent
 import android.os.Build

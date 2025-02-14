@@ -1,4 +1,4 @@
-package com.interrapidisimo.android.appCore.valueObjet
+package com.interrapidisimo.android.core.valueObjet
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp

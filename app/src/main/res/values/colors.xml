@@ -20,6 +20,7 @@
     <color name="colorBackground">#040CFF</color>
     <color name="colorOnBackground">#1E1A1D</color>
     <color name="colorWindowBackground">#FFFFFF</color>
+    <color name="colorBackgroundFloating">#A95B5FFF</color>
 
     <color name="colorSurface">#FBF9F9</color>    <!--Container BottomNavigation -->
     <color name="colorOnSurface">#A2A2A2</color>  <!--Text label color (inactive)-->

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingHorizontal="10dp"
+    android:paddingBottom="16dp">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/mcv_cocktail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/colorBackgroundFloating"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!-- Imagen de Encabezado -->
+            <ImageView
+                android:id="@+id/imgHeader"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:contentDescription="@string/icon"
+                android:scaleType="centerCrop"
+                android:src="@drawable/splash_api_android_up_30_img"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+
+            <!-- Título -->
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tenemos_noticias"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@+id/imgHeader"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <!-- Descripción -->
+            <TextView
+                android:id="@+id/tvDescription"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:paddingTop="16dp"
+                android:paddingHorizontal="4dp"
+                android:text="@string/actualiza_tu_app_para_seguir_disfrutando_de_todos_nuestros_beneficios_que_tenemos_para_ti"
+                android:textSize="14sp"
+                android:textAlignment="center"
+                app:layout_constraintTop_toBottomOf="@id/tvTitle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <!-- Botón Cancelar -->
+            <Button
+                android:id="@+id/btnCancel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/cancelar"
+                app:layout_constraintTop_toBottomOf="@id/tvDescription"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/btnAccept"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="4dp"/>
+
+            <!-- Botón Aceptar -->
+            <Button
+                android:id="@+id/btnAccept"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/actualizar"
+                app:layout_constraintTop_toBottomOf="@id/tvDescription"
+                app:layout_constraintStart_toEndOf="@id/btnCancel"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="24dp"
+                android:layout_marginStart="4dp"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

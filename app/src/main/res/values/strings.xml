@@ -14,6 +14,11 @@
     <string name="password">Password</string>
     <string name="interrapidisimo_go">Interrapidisimo Go!</string>
     <string name="logo">Logo</string>
+    <string name="actualizar">Actualizar</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="tenemos_noticias">¡Tenemos noticias!</string>
+    <string name="actualiza_tu_app_para_seguir_disfrutando_de_todos_nuestros_beneficios_que_tenemos_para_ti">Actualiza tu app para seguir disfrutando de todos nuestros beneficios que tenemos para ti</string>
+    <string name="icon">Icon</string>
 
 
 </resources>
