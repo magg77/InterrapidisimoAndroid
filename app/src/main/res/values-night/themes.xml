@@ -117,7 +117,7 @@
     <!-- Tema personalizado para AlertDialog -->
     <style name="CustomAlertDialog" parent="MaterialAlertDialog.MaterialComponents">
         <!-- Elimina la sombra que aparece en las esquinas -->
-        <item name="android:elevation">8dp</item>
+        <item name="android:elevation">0dp</item>
         <item name="android:background">@color/colorBackgroundFloating</item>
 
 

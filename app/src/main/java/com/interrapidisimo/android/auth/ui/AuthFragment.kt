@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.viewModels
@@ -83,8 +84,10 @@ class AuthFragment : Fragment() {
                             ) {
 
                                 // Llamar al diálogo cuando sea necesario
-                                showAlertDialog()
+                                showAlertDialog(updateApp = true)
 
+                            }else{
+                                showAlertDialog(updateApp = false)
                             }
                         }
 
@@ -109,7 +112,7 @@ class AuthFragment : Fragment() {
         }
     }
 
-    private fun showAlertDialog() {
+    private fun showAlertDialog(updateApp: Boolean) {
 
         val builder = MaterialAlertDialogBuilder(requireContext(), R.style.CustomAlertDialog)
 
@@ -118,6 +121,7 @@ class AuthFragment : Fragment() {
         val dialogView = inflater.inflate(R.layout.custom_dialog, null)
 
         // Obtener referencias a los elementos
+        val txvShowInfo = dialogView.findViewById<TextView>(R.id.tvDescription)
         val btnCancel = dialogView.findViewById<Button>(R.id.btnCancel)
         val btnAccept = dialogView.findViewById<Button>(R.id.btnAccept)
 
@@ -130,6 +134,8 @@ class AuthFragment : Fragment() {
         // Evita que se cierre al tocar fuera del diálogo
         dialog.setCancelable(false)
         dialog.setCanceledOnTouchOutside(false)
+
+        txvShowInfo.text = getString(if (updateApp) R.string.available_update_app else R.string.not_available_update_app)
 
         btnCancel.setOnClickListener {
             Log.d("AlertDialog", "Botón Cancelar presionado") // Verifica si se ejecuta

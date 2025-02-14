@@ -6,13 +6,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingHorizontal="10dp"
-    android:paddingBottom="16dp">
+    android:paddingVertical="16dp">
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/mcv_cocktail"
+        android:id="@+id/mcv_dialog"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardBackgroundColor="@color/colorBackgroundFloating"
+        app:strokeColor="@android:color/transparent"
+        app:cardElevation="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -54,7 +56,7 @@
                 android:layout_height="wrap_content"
                 android:paddingTop="16dp"
                 android:paddingHorizontal="4dp"
-                android:text="@string/actualiza_tu_app_para_seguir_disfrutando_de_todos_nuestros_beneficios_que_tenemos_para_ti"
+                android:text=""
                 android:textSize="14sp"
                 android:textAlignment="center"
                 app:layout_constraintTop_toBottomOf="@id/tvTitle"
