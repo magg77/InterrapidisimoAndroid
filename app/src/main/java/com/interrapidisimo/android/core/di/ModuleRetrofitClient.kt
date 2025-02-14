@@ -30,13 +30,12 @@ object ModuleRetrofitClient {
             .addInterceptor(CustomHeadersInterceptor {
                 mapOf(
                     "Usuario" to "pam.meredy21",
-                    "pam.meredy21" to "987204545",
+                    "Identificacion" to "987204545",
                     "IdUsuario" to "pam.meredy21",
                     "IdCentroServicio" to "1295",
                     "NombreCentroServicio" to "PTO/BOGOTA/CUND/COL/OF PRINCIPAL - CRA30#7-45",
                     "IdAplicativoOrigen" to "9",
-                    "Accept" to "text/json",
-                    "text/json" to "application/json"
+                    "Accept" to "text/json"
                 )
             })
             // HTTP log interceptor in debug mode only
@@ -44,6 +43,7 @@ object ModuleRetrofitClient {
                 if (BuildConfig.DEBUG) {
                     val httpLogginInterceptor = HttpLoggingInterceptor().apply {
                         level = HttpLoggingInterceptor.Level.BODY
+                        //level = HttpLoggingInterceptor.Level.HEADERS
                     }
                     okHttpClient.addInterceptor(httpLogginInterceptor)
                 }
@@ -57,9 +57,16 @@ object ModuleRetrofitClient {
     @Singleton
     @Provides
     fun provideNetworkRetrofitModule(okHttpClient: OkHttpClient): Retrofit {
+
+        val gson = GsonBuilder()
+            .disableHtmlEscaping() // Evita que escape caracteres especiales
+            .create()
+
+        //val gson = GsonBuilder().create()
+
         return Retrofit.Builder()
             .addConverterFactory(ScalarsConverterFactory.create())
-            .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
+            .addConverterFactory(GsonConverterFactory.create(gson))
             .client(okHttpClient)
             .baseUrl(Constants.BASE_URL)
             .build()

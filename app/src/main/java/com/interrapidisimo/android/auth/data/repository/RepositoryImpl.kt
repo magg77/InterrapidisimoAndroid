@@ -2,7 +2,11 @@ package com.interrapidisimo.android.auth.data.repository
 
 import android.content.Context
 import android.util.Log
+import com.interrapidisimo.android.auth.data.provider.remote.model.Authenticate
+import com.interrapidisimo.android.auth.data.provider.remote.model.AuthenticateCustom
+import com.interrapidisimo.android.auth.data.provider.remote.model.AuthenticateRequest
 import com.interrapidisimo.android.auth.data.provider.remote.model.StoreAppControl
+import com.interrapidisimo.android.auth.data.provider.remote.model.toAuthenticateCustom
 import com.interrapidisimo.android.auth.data.provider.remote.server.DataSourceRemoteContract
 import com.interrapidisimo.android.core.utils.ConnectionManager
 import com.interrapidisimo.android.core.valueObjet.ResourceState
@@ -42,6 +46,47 @@ class RepositoryImpl @Inject constructor(private val dataSourceRemote: DataSourc
             } else {
                 // Emitir error por red
                 send(ResourceState.FailureState("No hay conexión de red"))
+            }
+
+        }
+
+    override suspend fun authenticateDataSourceRepo(
+        context: Context,
+        nomAplicacion: String,
+        usuario: String,
+        password: String
+    ): Flow<ResourceState<AuthenticateCustom>> =
+        channelFlow {
+
+            // Verificar la conexión de red
+            if (!ConnectionManager.isNetworkAvailable(context)) {
+                send(ResourceState.FailureState("No hay conexión de red"))
+            }
+
+            val request = AuthenticateRequest(
+                nomAplicacion = nomAplicacion,
+                usuario = usuario,
+                password = password,
+                mac = "",
+                path = ""
+            )
+
+            when (val response = dataSourceRemote.authenticateDataSourceRemote(request)) {
+
+                is ResourceState.SuccessState -> {
+                    val auth: AuthenticateCustom = response.data.toAuthenticateCustom()
+
+                    send(ResourceState.SuccessState(auth))
+                }
+
+                is ResourceState.FailureState -> {
+                    send(ResourceState.FailureState(response.message))
+                }
+
+                else -> {
+                    send(ResourceState.FailureState("Error desconocido"))
+                }
+
             }
 
         }

@@ -56,6 +56,10 @@ class AuthFragment : Fragment() {
 
         vpStoreAppControlObserver()
 
+        binding.buttonAuth.setOnClickListener {
+            authenticateUser()
+        }
+
     }
 
     override fun onDestroyView() {
@@ -64,7 +68,7 @@ class AuthFragment : Fragment() {
     }
 
     private fun vpStoreAppControlObserver() {
-        authenticateAppViewModel.getVersionApp(requireContext())
+        authenticateAppViewModel.getVersionApp()
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 authenticateAppViewModel.uiState.collect() {
@@ -86,9 +90,48 @@ class AuthFragment : Fragment() {
                                 // Llamar al diálogo cuando sea necesario
                                 showAlertDialog(updateApp = true)
 
-                            }else{
+                            } else {
                                 showAlertDialog(updateApp = false)
                             }
+                        }
+
+                        is ResourceState.FailureState -> {
+                            binding.psHome.visibility = View.GONE
+
+                            Toast.makeText(
+                                requireContext(),
+                                "Ocurrio un error al mostrar los datos: ${it.message}",
+                                Toast.LENGTH_SHORT
+                            ).show()
+
+                        }
+
+                        else -> {}
+
+                    }
+
+
+                }
+            }
+        }
+    }
+
+    private fun authenticateUser() {
+        authenticateAppViewModel.authenticate()
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                authenticateAppViewModel.uiStateAuthenticate.collect() {
+
+                    when (it) {
+
+                        is ResourceState.LoadingState -> {
+                            binding.psHome.visibility = View.VISIBLE
+                        }
+
+                        is ResourceState.SuccessState -> {
+
+                            binding.psHome.visibility = View.GONE
+                            Log.i("authenticate", "$it")
                         }
 
                         is ResourceState.FailureState -> {
@@ -135,7 +178,8 @@ class AuthFragment : Fragment() {
         dialog.setCancelable(false)
         dialog.setCanceledOnTouchOutside(false)
 
-        txvShowInfo.text = getString(if (updateApp) R.string.available_update_app else R.string.not_available_update_app)
+        txvShowInfo.text =
+            getString(if (updateApp) R.string.available_update_app else R.string.not_available_update_app)
 
         btnCancel.setOnClickListener {
             Log.d("AlertDialog", "Botón Cancelar presionado") // Verifica si se ejecuta

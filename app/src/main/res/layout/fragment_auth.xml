@@ -41,6 +41,35 @@
             app:layout_constraintTop_toBottomOf="@+id/tv_show_header" />
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_name_app"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="16dp"
+            app:errorEnabled="true"
+            app:helperText="@string/nombre_aplicaci_n"
+            app:helperTextEnabled="true"
+            style="?attr/textInputOutlinedDenseStyle"
+            app:boxStrokeColor="@color/text_input_layout"
+            app:hintTextColor="@color/text_input_layout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_show_info">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/til_name_app_data"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="32dp"
+                android:ems="10"
+                android:hint="@string/nombre_aplicaci_n"
+                android:inputType="text"
+                android:padding="8dp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/til_user"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -55,7 +84,7 @@
             app:hintTextColor="@color/text_input_layout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_show_info">
+            app:layout_constraintTop_toBottomOf="@+id/til_name_app">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/til_user_data"
@@ -98,9 +127,8 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/button_first"
+            android:id="@+id/button_auth"
             android:layout_width="match_parent"
             android:layout_height="64dp"
             android:layout_marginStart="16dp"
