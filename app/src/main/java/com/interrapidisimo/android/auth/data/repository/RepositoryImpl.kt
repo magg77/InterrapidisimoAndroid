@@ -1,6 +1,7 @@
 package com.interrapidisimo.android.auth.data.repository
 
 import android.content.Context
+import android.util.Base64
 import android.util.Log
 import com.interrapidisimo.android.auth.data.provider.remote.model.Authenticate
 import com.interrapidisimo.android.auth.data.provider.remote.model.AuthenticateCustom
@@ -53,7 +54,7 @@ class RepositoryImpl @Inject constructor(private val dataSourceRemote: DataSourc
     override suspend fun authenticateDataSourceRepo(
         context: Context,
         nomAplicacion: String,
-        usuario: String,
+        user: String,
         password: String
     ): Flow<ResourceState<AuthenticateCustom>> =
         channelFlow {
@@ -63,10 +64,13 @@ class RepositoryImpl @Inject constructor(private val dataSourceRemote: DataSourc
                 send(ResourceState.FailureState("No hay conexión de red"))
             }
 
+            val encodedUser = Base64.encodeToString(user.toByteArray(), Base64.DEFAULT)
+            val encodedPassword = Base64.encodeToString(password.toByteArray(), Base64.DEFAULT)
+
             val request = AuthenticateRequest(
                 nomAplicacion = nomAplicacion,
-                usuario = usuario,
-                password = password,
+                user = encodedUser,
+                password = encodedPassword,
                 mac = "",
                 path = ""
             )

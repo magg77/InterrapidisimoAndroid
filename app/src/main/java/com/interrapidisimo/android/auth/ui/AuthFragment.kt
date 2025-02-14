@@ -1,7 +1,5 @@
 package com.interrapidisimo.android.auth.ui
 
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -11,7 +9,6 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -23,7 +20,6 @@ import com.interrapidisimo.android.core.utils.GetAppVersion
 import com.interrapidisimo.android.core.valueObjet.ResourceState
 import com.interrapidisimo.android.databinding.FragmentAuthBinding
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 /**
@@ -57,7 +53,11 @@ class AuthFragment : Fragment() {
         vpStoreAppControlObserver()
 
         binding.buttonAuth.setOnClickListener {
-            authenticateUser()
+            authenticateUser(
+                nameApp = binding.tilNameAppData.text.toString(),
+                user = binding.tilUserData.text.toString(),
+                password = binding.tilPasswordData.text.toString()
+            )
         }
 
     }
@@ -116,8 +116,8 @@ class AuthFragment : Fragment() {
         }
     }
 
-    private fun authenticateUser() {
-        authenticateAppViewModel.authenticate()
+    private fun authenticateUser(nameApp: String, user: String, password: String) {
+        authenticateAppViewModel.authenticate(nameApp, user, password)
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 authenticateAppViewModel.uiStateAuthenticate.collect() {
@@ -139,7 +139,7 @@ class AuthFragment : Fragment() {
 
                             Toast.makeText(
                                 requireContext(),
-                                "Ocurrio un error al mostrar los datos: ${it.message}",
+                                "${it.message}",
                                 Toast.LENGTH_SHORT
                             ).show()
 

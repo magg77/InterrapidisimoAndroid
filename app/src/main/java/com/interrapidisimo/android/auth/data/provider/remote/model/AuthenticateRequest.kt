@@ -11,5 +11,5 @@ data class AuthenticateRequest(
     @SerializedName("NomAplicacion") val nomAplicacion: String = "",
     @SerializedName("Password") val password: String,
     @SerializedName("Path") val path: String = "",
-    @SerializedName("Usuario") val usuario: String
+    @SerializedName("Usuario") val user: String
 ): Parcelable

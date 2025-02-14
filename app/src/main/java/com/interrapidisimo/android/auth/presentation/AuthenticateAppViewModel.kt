@@ -1,6 +1,9 @@
 package com.interrapidisimo.android.auth.presentation
 
 import android.content.Context
+import android.util.Log
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.interrapidisimo.android.auth.data.provider.remote.model.AuthenticateCustom
@@ -30,6 +33,10 @@ class AuthenticateAppViewModel @Inject constructor(
         MutableStateFlow(ResourceState.LoadingState())
     val uiStateAuthenticate: StateFlow<ResourceState<AuthenticateCustom>> = _uiStateAuthenticate
 
+    private val _uiStateValidate = MutableLiveData<String>() // Puedes usarlo para mostrar mensajes de error
+    val uiStateValidate: LiveData<String> get() = _uiStateValidate
+
+
 
     fun getVersionApp() = viewModelScope.launch {
         usecase.getVpStoreAppControlUseCase(context)
@@ -37,12 +44,37 @@ class AuthenticateAppViewModel @Inject constructor(
             .launchIn(viewModelScope)
     }
 
-    fun authenticate() = viewModelScope.launch {
+    /*nomAplicacion = "Controller APP",
+    usuario = "cGFtLm1lcmVkeTIx\n",
+    password = "SW50ZXIyMDIx\n"*/
+
+    fun authenticate(nameApp: String, user: String, password: String) = viewModelScope.launch {
+
+
+
+        // Validación de campos
+        if (nameApp.isBlank()) {
+            _uiStateAuthenticate.value = ResourceState.FailureState("El nombre de la aplicación no puede estar vacío")
+            return@launch
+        }
+        if (user.isBlank()) {
+            _uiStateAuthenticate.value = ResourceState.FailureState("El usuario no puede estar vacío")
+            return@launch
+        }
+        if (password.isBlank()) {
+            _uiStateAuthenticate.value = ResourceState.FailureState("La contraseña no puede estar vacía")
+            return@launch
+        }
+        if (password.length < 6) {
+            _uiStateAuthenticate.value = ResourceState.FailureState("La contraseña debe tener al menos 6 caracteres")
+            return@launch
+        }
+
         usecase.authenticateDataSourceRepo(
             context,
-            nomAplicacion = "Controller APP",
-            usuario = "cGFtLm1lcmVkeTIx\n",
-            password = "SW50ZXIyMDIx\n"
+            nomAplicacion = nameApp,
+            user = user,
+            password = password
         )
             .onEach { _uiStateAuthenticate.value = it }
             .launchIn(viewModelScope)

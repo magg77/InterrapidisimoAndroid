@@ -68,7 +68,8 @@ class DataSourceRemoteImpl @Inject constructor(private val webServiceContract: W
 
             try {
 
-                Log.i("requestAuthentica", "${request.usuario} --- ${request.password}")
+                Log.i("requestAuthentica", "${request.user} --- ${request.password}")
+
                 val response: Response<Authenticate> = webServiceContract.authenticate(request)
 
                 if (response.isSuccessful) {

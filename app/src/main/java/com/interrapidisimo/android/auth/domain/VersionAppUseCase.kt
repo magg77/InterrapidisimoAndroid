@@ -17,10 +17,10 @@ class VersionAppUseCase @Inject constructor(private val repo: RepositoryContract
     override suspend fun authenticateDataSourceRepo(
         context: Context,
         nomAplicacion: String,
-        usuario: String,
+        user: String,
         password: String
     ): Flow<ResourceState<AuthenticateCustom>> =
-        repo.authenticateDataSourceRepo(context, nomAplicacion, usuario, password)
+        repo.authenticateDataSourceRepo(context, nomAplicacion, user, password)
 
 
 }

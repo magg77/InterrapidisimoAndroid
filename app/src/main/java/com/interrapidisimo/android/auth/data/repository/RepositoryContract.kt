@@ -14,7 +14,7 @@ interface RepositoryContract {
     suspend fun authenticateDataSourceRepo(
         context: Context,
         nomAplicacion: String,
-        usuario: String,
+        user: String,
         password: String
     ): Flow<ResourceState<AuthenticateCustom>>
 
