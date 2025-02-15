@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.interrapidisimo.android.auth.data.provider.remote.model.AuthenticateCustom
@@ -22,35 +23,27 @@ import javax.inject.Inject
 @HiltViewModel
 class AuthenticateAppViewModel @Inject constructor(
     private val usecase: VersionAppUseCaseContract,
-    @ApplicationContext private val context: Context
+    @ApplicationContext private val context: Context,
+    private val savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
-    private val _uiState: MutableStateFlow<ResourceState<StoreAppControl>> =
+    private val _uiStateVersionApp: MutableStateFlow<ResourceState<StoreAppControl>> =
         MutableStateFlow(ResourceState.LoadingState())
-    val uiState: StateFlow<ResourceState<StoreAppControl>> = _uiState
+    val uiStateVersionApp: StateFlow<ResourceState<StoreAppControl>> = _uiStateVersionApp
 
     private val _uiStateAuthenticate: MutableStateFlow<ResourceState<AuthenticateCustom>> =
         MutableStateFlow(ResourceState.LoadingState())
     val uiStateAuthenticate: StateFlow<ResourceState<AuthenticateCustom>> = _uiStateAuthenticate
 
-    private val _uiStateValidate = MutableLiveData<String>() // Puedes usarlo para mostrar mensajes de error
-    val uiStateValidate: LiveData<String> get() = _uiStateValidate
-
 
 
     fun getVersionApp() = viewModelScope.launch {
         usecase.getVpStoreAppControlUseCase(context)
-            .onEach { _uiState.value = it }
+            .onEach { _uiStateVersionApp.value = it }
             .launchIn(viewModelScope)
     }
 
-    /*nomAplicacion = "Controller APP",
-    usuario = "cGFtLm1lcmVkeTIx\n",
-    password = "SW50ZXIyMDIx\n"*/
-
     fun authenticate(nameApp: String, user: String, password: String) = viewModelScope.launch {
-
-
 
         // Validación de campos
         if (nameApp.isBlank()) {

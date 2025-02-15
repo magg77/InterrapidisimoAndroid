@@ -37,6 +37,10 @@ class AuthFragment : Fragment() {
 
     private val authenticateAppViewModel by viewModels<AuthenticateAppViewModel>()
 
+    private var hasShownDialog = false // Bandera para evitar múltiples diálogos
+
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -62,16 +66,24 @@ class AuthFragment : Fragment() {
 
     }
 
+    override fun onResume() {
+        super.onResume()
+
+
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
 
     private fun vpStoreAppControlObserver() {
+
         authenticateAppViewModel.getVersionApp()
+
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                authenticateAppViewModel.uiState.collect() {
+                authenticateAppViewModel.uiStateVersionApp.collect() {
 
                     when (it) {
 
@@ -83,15 +95,19 @@ class AuthFragment : Fragment() {
 
                             binding.psHome.visibility = View.GONE
 
-                            if (GetAppVersion.getAppVersion(requireContext())
-                                    .toInt() < it.data.versionApp.toInt()
-                            ) {
+                            if (!hasShownDialog) { // Solo mostramos el diálogo una vez
+                                hasShownDialog = true
 
-                                // Llamar al diálogo cuando sea necesario
-                                showAlertDialog(updateApp = true)
+                                if (GetAppVersion.getAppVersion(requireContext())
+                                        .toInt() < it.data.versionApp.toInt()
+                                ) {
 
-                            } else {
-                                showAlertDialog(updateApp = false)
+                                    // Llamar al diálogo cuando sea necesario
+                                    showAlertDialog(updateApp = true)
+
+                                } else {
+                                    showAlertDialog(updateApp = false)
+                                }
                             }
                         }
 
