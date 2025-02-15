@@ -2,10 +2,10 @@ package com.interrapidisimo.android.core.di
 
 import com.interrapidisimo.android.auth.data.provider.remote.server.DataSourceRemoteImpl
 import com.interrapidisimo.android.auth.data.provider.remote.server.DataSourceRemoteContract
-import com.interrapidisimo.android.auth.data.repository.RepositoryContract
-import com.interrapidisimo.android.auth.data.repository.RepositoryImpl
-import com.interrapidisimo.android.auth.domain.VersionAppUseCase
-import com.interrapidisimo.android.auth.domain.VersionAppUseCaseContract
+import com.interrapidisimo.android.auth.data.repository.remote.RepositoryContract
+import com.interrapidisimo.android.auth.data.repository.remote.RepositoryImpl
+import com.interrapidisimo.android.auth.domain.remote.VersionAppUseCase
+import com.interrapidisimo.android.auth.domain.remote.VersionAppUseCaseContract
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

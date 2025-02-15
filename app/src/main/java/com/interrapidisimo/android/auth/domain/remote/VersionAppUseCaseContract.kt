@@ -1,4 +1,4 @@
-package com.interrapidisimo.android.auth.domain
+package com.interrapidisimo.android.auth.domain.remote
 
 import android.content.Context
 import com.interrapidisimo.android.auth.data.provider.remote.model.AuthenticateCustom

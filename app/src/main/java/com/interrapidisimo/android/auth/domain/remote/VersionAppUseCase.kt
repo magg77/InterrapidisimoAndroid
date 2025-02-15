@@ -1,9 +1,9 @@
-package com.interrapidisimo.android.auth.domain
+package com.interrapidisimo.android.auth.domain.remote
 
 import android.content.Context
 import com.interrapidisimo.android.auth.data.provider.remote.model.AuthenticateCustom
 import com.interrapidisimo.android.auth.data.provider.remote.model.StoreAppControl
-import com.interrapidisimo.android.auth.data.repository.RepositoryContract
+import com.interrapidisimo.android.auth.data.repository.remote.RepositoryContract
 import com.interrapidisimo.android.core.valueObjet.ResourceState
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject

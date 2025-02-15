@@ -1,7 +1,6 @@
-package com.interrapidisimo.android.auth.data.repository
+package com.interrapidisimo.android.auth.data.repository.remote
 
 import android.content.Context
-import com.interrapidisimo.android.auth.data.provider.remote.model.Authenticate
 import com.interrapidisimo.android.auth.data.provider.remote.model.AuthenticateCustom
 import com.interrapidisimo.android.auth.data.provider.remote.model.StoreAppControl
 import com.interrapidisimo.android.core.valueObjet.ResourceState

@@ -2,14 +2,13 @@ package com.interrapidisimo.android.auth.presentation
 
 import android.content.Context
 import android.util.Log
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.interrapidisimo.android.auth.data.provider.remote.model.AuthenticateCustom
 import com.interrapidisimo.android.auth.data.provider.remote.model.StoreAppControl
-import com.interrapidisimo.android.auth.domain.VersionAppUseCaseContract
+import com.interrapidisimo.android.auth.domain.local.AuthenticateUseCase
+import com.interrapidisimo.android.auth.domain.remote.VersionAppUseCaseContract
 import com.interrapidisimo.android.core.valueObjet.ResourceState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -22,7 +21,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class AuthenticateAppViewModel @Inject constructor(
-    private val usecase: VersionAppUseCaseContract,
+    private val usecaseAuthenticateRemote: VersionAppUseCaseContract,
+    private val usecaseAuthenticateLocal: AuthenticateUseCase,
     @ApplicationContext private val context: Context,
     private val savedStateHandle: SavedStateHandle
 ) : ViewModel() {
@@ -38,7 +38,7 @@ class AuthenticateAppViewModel @Inject constructor(
 
 
     fun getVersionApp() = viewModelScope.launch {
-        usecase.getVpStoreAppControlUseCase(context)
+        usecaseAuthenticateRemote.getVpStoreAppControlUseCase(context)
             .onEach { _uiStateVersionApp.value = it }
             .launchIn(viewModelScope)
     }
@@ -65,7 +65,7 @@ class AuthenticateAppViewModel @Inject constructor(
             return@launch
         }
 
-        usecase.authenticateDataSourceRepo(
+        usecaseAuthenticateRemote.authenticateDataSourceRepo(
             context,
             nomAplicacion = nameApp,
             user = user,
@@ -73,6 +73,12 @@ class AuthenticateAppViewModel @Inject constructor(
         )
             .onEach { _uiStateAuthenticate.value = it }
             .launchIn(viewModelScope)
+    }
+
+    fun saveAuthenticateBdSQLite(auth: AuthenticateCustom) {
+        viewModelScope.launch {
+            usecaseAuthenticateLocal.insertAuthenticateUseCase(auth)
+        }
     }
 
 

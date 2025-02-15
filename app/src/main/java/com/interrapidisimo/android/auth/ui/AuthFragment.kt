@@ -154,7 +154,7 @@ class AuthFragment : Fragment() {
                         is ResourceState.SuccessState -> {
                             binding.psHome.visibility = View.GONE
 
-                            var data = it.data
+                            authenticateAppViewModel.saveAuthenticateBdSQLite(it.data)
                         }
 
                         is ResourceState.FailureState -> {
