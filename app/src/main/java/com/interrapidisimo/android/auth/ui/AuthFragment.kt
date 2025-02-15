@@ -1,6 +1,7 @@
 package com.interrapidisimo.android.auth.ui
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -17,6 +18,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.interrapidisimo.android.R
 import com.interrapidisimo.android.auth.presentation.AuthenticateAppViewModel
+import com.interrapidisimo.android.core.activitys.MainActivity
 import com.interrapidisimo.android.core.utils.GetAppVersion
 import com.interrapidisimo.android.core.valueObjet.ResourceState
 import com.interrapidisimo.android.databinding.FragmentAuthBinding
@@ -67,13 +69,10 @@ class AuthFragment : Fragment() {
                 password = binding.tilPasswordData.text.toString()
             )
         }
-
     }
 
     override fun onResume() {
         super.onResume()
-
-
     }
 
     override fun onDestroyView() {
@@ -155,6 +154,12 @@ class AuthFragment : Fragment() {
                             binding.psHome.visibility = View.GONE
 
                             authenticateAppViewModel.saveAuthenticateBdSQLite(it.data)
+
+                            val intent = Intent(requireContext(), MainActivity::class.java)
+                            startActivity(intent)
+                            requireActivity().finish()
+
+
                         }
 
                         is ResourceState.FailureState -> {

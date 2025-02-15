@@ -23,7 +23,7 @@
     <color name="colorBackgroundFloating">#873CFF</color>
 
     <color name="colorSurface">#0E0221</color>    <!--Container BottomNavigation - Container MaterialToolbar -->
-    <color name="colorOnSurface">#E9E9E9</color>  <!--Text label color (inActive) BottomNavigation  8A8A8A-->
+    <color name="colorOnSurface">#8A8A8A</color>  <!--Text label color (inActive) BottomNavigation  8A8A8A-->
     <color name="colorSurfaceVariant">#4D444B</color>
     <color name="colorOnSurfaceVariant">#EDE0F4</color>
     <color name="colorInverseSurface">#E6E6E6</color>
