@@ -45,6 +45,8 @@ class AuthenticateAppViewModel @Inject constructor(
 
     fun authenticate(nameApp: String, user: String, password: String) = viewModelScope.launch {
 
+        Log.i("authenticateAppViewModel", "desde viewmodel")
+
         // Validación de campos
         if (nameApp.isBlank()) {
             _uiStateAuthenticate.value = ResourceState.FailureState("El nombre de la aplicación no puede estar vacío")

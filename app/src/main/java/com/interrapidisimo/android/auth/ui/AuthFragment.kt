@@ -1,5 +1,6 @@
 package com.interrapidisimo.android.auth.ui
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -38,7 +39,7 @@ class AuthFragment : Fragment() {
     private val authenticateAppViewModel by viewModels<AuthenticateAppViewModel>()
 
     private var hasShownDialog = false // Bandera para evitar múltiples diálogos
-
+    private var hasValidationLogin = false
 
 
     override fun onCreateView(
@@ -57,6 +58,9 @@ class AuthFragment : Fragment() {
         vpStoreAppControlObserver()
 
         binding.buttonAuth.setOnClickListener {
+
+            hasValidationLogin = false
+
             authenticateUser(
                 nameApp = binding.tilNameAppData.text.toString(),
                 user = binding.tilUserData.text.toString(),
@@ -114,16 +118,15 @@ class AuthFragment : Fragment() {
                         is ResourceState.FailureState -> {
                             binding.psHome.visibility = View.GONE
 
+                            hasValidationLogin = true
                             Toast.makeText(
                                 requireContext(),
                                 "Ocurrio un error al mostrar los datos: ${it.message}",
                                 Toast.LENGTH_SHORT
                             ).show()
-
                         }
 
                         else -> {}
-
                     }
 
 
@@ -133,7 +136,11 @@ class AuthFragment : Fragment() {
     }
 
     private fun authenticateUser(nameApp: String, user: String, password: String) {
+
+        Log.i("authenticateAppViewModel", "desde fragment = $hasValidationLogin")
+
         authenticateAppViewModel.authenticate(nameApp, user, password)
+
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 authenticateAppViewModel.uiStateAuthenticate.collect() {
@@ -145,20 +152,28 @@ class AuthFragment : Fragment() {
                         }
 
                         is ResourceState.SuccessState -> {
-
                             binding.psHome.visibility = View.GONE
-                            Log.i("authenticate", "$it")
+
+                            var data = it.data
                         }
 
                         is ResourceState.FailureState -> {
                             binding.psHome.visibility = View.GONE
 
-                            Toast.makeText(
-                                requireContext(),
-                                "${it.message}",
-                                Toast.LENGTH_SHORT
-                            ).show()
+                            Log.i("authenticateAppViewModel", "desde fragment failure = $hasValidationLogin")
 
+                            if(!hasValidationLogin){
+
+                                hasValidationLogin = true
+
+                                /*Toast.makeText(
+                                    requireContext(),
+                                    "${it.message}",
+                                    Toast.LENGTH_SHORT
+                                ).show()*/
+
+                                showAlertDialog(requireContext(), it.message)
+                            }
                         }
 
                         else -> {}
@@ -211,6 +226,17 @@ class AuthFragment : Fragment() {
         // Mostrar el AlertDialog
         dialog.show()
 
+    }
+
+    private fun showAlertDialog(context: Context, message: String) {
+        MaterialAlertDialogBuilder(context)
+            .setTitle("Información de interes")
+            .setMessage(message)
+            .setPositiveButton("Aceptar") { dialog, _ ->
+                dialog.dismiss() // Cierra el diálogo
+            }
+            .setCancelable(false)
+            .show()
     }
 
 

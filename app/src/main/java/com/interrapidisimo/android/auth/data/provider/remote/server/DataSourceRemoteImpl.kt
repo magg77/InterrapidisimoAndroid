@@ -35,13 +35,15 @@ class DataSourceRemoteImpl @Inject constructor(private val webServiceContract: W
 
                 } else {
 
+                    val errorBody = response.errorBody()?.string()
+
                     // ⚠️ Manejar códigos de error HTTP específicos
                     val errorMessage = when (response.code()) {
-                        400 -> "Solicitud incorrecta (Bad Request)"
-                        401 -> "No autorizado (Unauthorized)"
-                        403 -> "Prohibido (Forbidden)"
-                        404 -> "Recurso no encontrado (Not Found)"
-                        500 -> "Error interno del servidor"
+                        400 -> errorBody ?: "Error en la solicitud"
+                        401 -> errorBody ?: "No autorizado (Unauthorized)"
+                        403 -> errorBody ?: "Prohibido (Forbidden)"
+                        404 -> errorBody ?: "Recurso no encontrado (Not Found)"
+                        500 -> errorBody ?: "Error interno del servidor"
                         else -> "Error desconocido: ${response.code()}"
                     }
                     ResourceState.FailureState(errorMessage)
@@ -83,13 +85,15 @@ class DataSourceRemoteImpl @Inject constructor(private val webServiceContract: W
 
                 } else {
 
+                    val errorBody = response.errorBody()?.string()
+
                     // ⚠️ Manejar códigos de error HTTP específicos
                     val errorMessage = when (response.code()) {
-                        400 -> "Solicitud incorrecta (Bad Request)"
-                        401 -> "No autorizado (Unauthorized)"
-                        403 -> "Prohibido (Forbidden)"
-                        404 -> "Recurso no encontrado (Not Found)"
-                        500 -> "Error interno del servidor"
+                        400 -> errorBody ?: "Error en la solicitud"
+                        401 -> errorBody ?: "No autorizado (Unauthorized)"
+                        403 -> errorBody ?: "Prohibido (Forbidden)"
+                        404 -> errorBody ?: "Recurso no encontrado (Not Found)"
+                        500 -> errorBody ?: "Error interno del servidor"
                         else -> "Error desconocido: ${response.code()}"
                     }
                     ResourceState.FailureState(errorMessage)
