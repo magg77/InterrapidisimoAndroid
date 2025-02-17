@@ -4,7 +4,7 @@
 ![Test Image 2](https://github.com/magg77/InterrapidisimoAndroid/blob/develop/screens/app.png)
 
 # 🛠 Requisitos
-Movie app developed in Kotlin to be run on Android mobile devices. Before running the project, make sure you have the following installed:
+Interrapidisimo Go is an app developed in Kotlin to be run on Android mobile devices. Before running the project, make sure you have the following installed:
 
 - Android Studio Ladybug Feature Drop | 2024.2.2
 - Minimum version 23
