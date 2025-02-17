@@ -20,7 +20,7 @@
 
     <fragment
         android:id="@+id/navigation_localities"
-        android:name="com.interrapidisimo.android.localities.LocalitiesFragment"
+        android:name="com.interrapidisimo.android.localities.ui.LocalitiesFragment"
         android:label="@string/title_localities"
         tools:layout="@layout/fragment_localities" />
 

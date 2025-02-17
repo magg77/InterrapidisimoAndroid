@@ -6,7 +6,7 @@ import com.interrapidisimo.android.auth.data.provider.remote.model.AuthenticateC
 import com.interrapidisimo.android.auth.data.provider.remote.model.AuthenticateRequest
 import com.interrapidisimo.android.auth.data.provider.remote.model.StoreAppControl
 import com.interrapidisimo.android.auth.data.provider.remote.model.toAuthenticateCustom
-import com.interrapidisimo.android.auth.data.provider.remote.server.DataSourceRemoteContract
+import com.interrapidisimo.android.auth.data.provider.remote.server.DataSourceAuthRemote
 import com.interrapidisimo.android.core.utils.ConnectionManager
 import com.interrapidisimo.android.core.utils.Constants
 import com.interrapidisimo.android.core.valueObjet.ResourceState
@@ -14,8 +14,8 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.channelFlow
 import javax.inject.Inject
 
-class RepositoryImpl @Inject constructor(private val dataSourceRemote: DataSourceRemoteContract) :
-    RepositoryContract {
+class AuthenticateRemoteRepositoryImpl @Inject constructor(private val dataSourceRemote: DataSourceAuthRemote) :
+    AuthenticateRemoteRepository {
 
     override suspend fun getVpStoreAppControlRepo(context: Context): Flow<ResourceState<StoreAppControl>> =
         channelFlow {

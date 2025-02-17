@@ -7,8 +7,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.interrapidisimo.android.auth.data.provider.remote.model.AuthenticateCustom
 import com.interrapidisimo.android.auth.data.provider.remote.model.StoreAppControl
-import com.interrapidisimo.android.auth.domain.local.AuthenticateUseCase
-import com.interrapidisimo.android.auth.domain.remote.VersionAppUseCaseContract
+import com.interrapidisimo.android.auth.domain.local.AuthenticateLocalUseCase
+import com.interrapidisimo.android.auth.domain.remote.AuthenticateRemoteUseCase
 import com.interrapidisimo.android.core.valueObjet.ResourceState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -20,9 +20,9 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class AuthenticateAppViewModel @Inject constructor(
-    private val usecaseAuthenticateRemote: VersionAppUseCaseContract,
-    private val usecaseAuthenticateLocal: AuthenticateUseCase,
+class AuthenticateViewModel @Inject constructor(
+    private val usecaseAuthenticateRemote: AuthenticateRemoteUseCase,
+    private val usecaseAuthenticateLocal: AuthenticateLocalUseCase,
     @ApplicationContext private val context: Context,
     private val savedStateHandle: SavedStateHandle
 ) : ViewModel() {

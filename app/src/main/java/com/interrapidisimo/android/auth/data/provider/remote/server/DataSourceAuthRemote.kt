@@ -5,7 +5,7 @@ import com.interrapidisimo.android.auth.data.provider.remote.model.AuthenticateR
 import com.interrapidisimo.android.core.valueObjet.ResourceState
 import okhttp3.ResponseBody
 
-interface DataSourceRemoteContract {
+interface DataSourceAuthRemote {
 
     suspend fun getVpStoreAppControlDataSource(): ResourceState<ResponseBody>
 

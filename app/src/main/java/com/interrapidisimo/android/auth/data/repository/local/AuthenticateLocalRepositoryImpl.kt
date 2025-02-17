@@ -7,9 +7,9 @@ import com.interrapidisimo.android.auth.data.provider.local.SQLiteHelper
 import com.interrapidisimo.android.auth.data.provider.remote.model.AuthenticateCustom
 import javax.inject.Inject
 
-class AuthenticateRepositoryImpl @Inject constructor(
+class AuthenticateLocalRepositoryImpl @Inject constructor(
     private val dbHelper: SQLiteHelper
-) : AuthenticateRepository {
+) : AuthenticateLocalRepository {
 
     override fun insertAuthenticate(auth: AuthenticateCustom) {
         val db = dbHelper.writableDatabase

@@ -3,7 +3,7 @@ package com.interrapidisimo.android.core.di
 import com.google.gson.GsonBuilder
 import com.interrapidisimo.android.BuildConfig
 import com.interrapidisimo.android.core.utils.Constants
-import com.interrapidisimo.android.auth.data.provider.remote.server.WebServiceContract
+import com.interrapidisimo.android.auth.data.provider.remote.server.WebServiceAuth
 import com.interrapidisimo.android.core.valueObjet.CustomHeadersInterceptor
 import dagger.Module
 import dagger.Provides
@@ -19,7 +19,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object ModuleRetrofitClient {
+object RetrofitClientModule {
 
     @Provides
     @Singleton
@@ -74,8 +74,8 @@ object ModuleRetrofitClient {
 
     @Singleton
     @Provides
-    fun provideWebServiceInterface(retrofit: Retrofit): WebServiceContract {
-        return retrofit.create(WebServiceContract::class.java)
+    fun provideWebServiceInterface(retrofit: Retrofit): WebServiceAuth {
+        return retrofit.create(WebServiceAuth::class.java)
     }
 
 

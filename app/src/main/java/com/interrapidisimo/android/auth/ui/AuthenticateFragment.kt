@@ -17,11 +17,11 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.interrapidisimo.android.R
-import com.interrapidisimo.android.auth.presentation.AuthenticateAppViewModel
+import com.interrapidisimo.android.auth.presentation.AuthenticateViewModel
 import com.interrapidisimo.android.core.activitys.MainActivity
 import com.interrapidisimo.android.core.utils.GetAppVersion
 import com.interrapidisimo.android.core.valueObjet.ResourceState
-import com.interrapidisimo.android.databinding.FragmentAuthBinding
+import com.interrapidisimo.android.databinding.FragmentAuthenticateBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -30,15 +30,15 @@ import kotlinx.coroutines.launch
  */
 
 @AndroidEntryPoint
-class AuthFragment : Fragment() {
+class AuthenticateFragment : Fragment() {
 
-    private var _binding: FragmentAuthBinding? = null
+    private var _binding: FragmentAuthenticateBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
 
-    private val authenticateAppViewModel by viewModels<AuthenticateAppViewModel>()
+    private val authenticateViewModel by viewModels<AuthenticateViewModel>()
 
     private var hasShownDialog = false // Bandera para evitar múltiples diálogos
     private var hasValidationLogin = false
@@ -49,7 +49,7 @@ class AuthFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        _binding = FragmentAuthBinding.inflate(inflater, container, false)
+        _binding = FragmentAuthenticateBinding.inflate(inflater, container, false)
         return binding.root
 
     }
@@ -82,11 +82,11 @@ class AuthFragment : Fragment() {
 
     private fun vpStoreAppControlObserver() {
 
-        authenticateAppViewModel.getVersionApp()
+        authenticateViewModel.getVersionApp()
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                authenticateAppViewModel.uiStateVersionApp.collect() {
+                authenticateViewModel.uiStateVersionApp.collect() {
 
                     when (it) {
 
@@ -136,11 +136,11 @@ class AuthFragment : Fragment() {
 
     private fun authenticateUser(nameApp: String, user: String, password: String) {
 
-        authenticateAppViewModel.authenticate(nameApp, user, password)
+        authenticateViewModel.authenticate(nameApp, user, password)
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                authenticateAppViewModel.uiStateAuthenticate.collect() {
+                authenticateViewModel.uiStateAuthenticate.collect() {
 
                     when (it) {
 
@@ -151,7 +151,7 @@ class AuthFragment : Fragment() {
                         is ResourceState.SuccessState -> {
                             binding.psHome.visibility = View.GONE
 
-                            authenticateAppViewModel.saveAuthenticateBdSQLite(it.data)
+                            authenticateViewModel.saveAuthenticateBdSQLite(it.data)
 
                             val intent = Intent(requireContext(), MainActivity::class.java)
                             startActivity(intent)

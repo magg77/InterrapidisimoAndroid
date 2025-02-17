@@ -13,8 +13,8 @@ import retrofit2.HttpException
 import retrofit2.Response
 import javax.inject.Inject
 
-class DataSourceRemoteImpl @Inject constructor(private val webServiceContract: WebServiceContract) :
-    DataSourceRemoteContract {
+class DataSourceAuthRemoteImpl @Inject constructor(private val webServiceAuth: WebServiceAuth) :
+    DataSourceAuthRemote {
 
     override suspend fun getVpStoreAppControlDataSource(): ResourceState<ResponseBody> {
 
@@ -22,7 +22,7 @@ class DataSourceRemoteImpl @Inject constructor(private val webServiceContract: W
 
             try {
 
-                val response = webServiceContract.getVpStoreAppControl()
+                val response = webServiceAuth.getVpStoreAppControl()
 
                 if (response.isSuccessful) {
 
@@ -72,7 +72,7 @@ class DataSourceRemoteImpl @Inject constructor(private val webServiceContract: W
 
                 Log.i("requestAuthentica", "${request.user} --- ${request.password}")
 
-                val response: Response<Authenticate> = webServiceContract.authenticate(request)
+                val response: Response<Authenticate> = webServiceAuth.authenticate(request)
 
                 if (response.isSuccessful) {
 

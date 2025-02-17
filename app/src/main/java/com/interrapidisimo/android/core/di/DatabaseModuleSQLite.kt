@@ -2,10 +2,10 @@ package com.interrapidisimo.android.core.di
 
 import android.content.Context
 import com.interrapidisimo.android.auth.data.provider.local.SQLiteHelper
-import com.interrapidisimo.android.auth.data.repository.local.AuthenticateRepository
-import com.interrapidisimo.android.auth.data.repository.local.AuthenticateRepositoryImpl
-import com.interrapidisimo.android.auth.domain.local.AuthenticateUseCase
-import com.interrapidisimo.android.auth.domain.local.AuthenticateUseCaseImpl
+import com.interrapidisimo.android.auth.data.repository.local.AuthenticateLocalRepository
+import com.interrapidisimo.android.auth.data.repository.local.AuthenticateLocalRepositoryImpl
+import com.interrapidisimo.android.auth.domain.local.AuthenticateLocalUseCase
+import com.interrapidisimo.android.auth.domain.local.AuthenticateLocalUseCaseImpl
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -16,17 +16,17 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-abstract class DatabaseModule {
+abstract class DatabaseModuleSQLite {
 
     @Binds
     @Singleton
-    abstract fun bindAuthenticateUseCase(authenticateUsecase: AuthenticateUseCaseImpl): AuthenticateUseCase
+    abstract fun bindAuthenticateUseCase(authenticateUsecase: AuthenticateLocalUseCaseImpl): AuthenticateLocalUseCase
 
     @Binds
     @Singleton
     abstract fun bindAuthenticateRepository(
-        repositoryImpl: AuthenticateRepositoryImpl
-    ): AuthenticateRepository
+        repositoryImpl: AuthenticateLocalRepositoryImpl
+    ): AuthenticateLocalRepository
 
     companion object {
         @Provides

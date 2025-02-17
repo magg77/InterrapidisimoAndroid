@@ -1,4 +1,4 @@
-package com.interrapidisimo.android.localities
+package com.interrapidisimo.android.localities.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.interrapidisimo.android.databinding.FragmentLocalitiesBinding
+import com.interrapidisimo.android.localities.presentation.LocalitiesViewModel
 
 class LocalitiesFragment : Fragment() {
 
@@ -22,14 +23,14 @@ class LocalitiesFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val dashboardViewModel =
-            ViewModelProvider(this).get(DashboardViewModel::class.java)
+        val localitiesViewModel =
+            ViewModelProvider(this).get(LocalitiesViewModel::class.java)
 
         _binding = FragmentLocalitiesBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         val textView: TextView = binding.textDashboard
-        dashboardViewModel.text.observe(viewLifecycleOwner) {
+        localitiesViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
         }
         return root
