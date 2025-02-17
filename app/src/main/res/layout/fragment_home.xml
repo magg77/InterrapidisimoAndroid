@@ -4,19 +4,103 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.home.HomeFragment">
+    android:padding="16dp"
+    tools:context=".home.HomeFragment">
 
-    <TextView
-        android:id="@+id/text_home"
-        android:layout_width="match_parent"
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardView"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="4dp"
+        android:layout_margin="8dp"
+        app:strokeWidth="1dp"
+        app:strokeColor="@android:color/darker_gray"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <!-- Etiqueta para Identificación -->
+            <TextView
+                android:id="@+id/label_identificacion"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Identificación:"
+                android:textSize="14sp"
+                android:textColor="@color/textColorHintDisabled"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!-- Valor de Identificación -->
+            <TextView
+                android:id="@+id/tv_identificacion"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="12345"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/label_identificacion"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <!-- Etiqueta para Nombre -->
+            <TextView
+                android:id="@+id/label_nombre"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Nombre:"
+                android:textSize="14sp"
+                android:textColor="@color/textColorHintDisabled"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_identificacion" />
+
+            <!-- Valor de Nombre -->
+            <TextView
+                android:id="@+id/tv_nombre"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Juan Pérez"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/label_nombre"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <!-- Etiqueta para Usuario -->
+            <TextView
+                android:id="@+id/label_usuario"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Usuario:"
+                android:textSize="14sp"
+                android:textColor="@color/textColorHintDisabled"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_nombre" />
+
+            <!-- Valor de Usuario -->
+            <TextView
+                android:id="@+id/tv_usuario"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="juan_perez"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/label_usuario"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,4 +1,4 @@
-package com.interrapidisimo.android.ui.home
+package com.interrapidisimo.android.home
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.interrapidisimo.android.core.utils.Constants
 import com.interrapidisimo.android.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
@@ -28,11 +29,17 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textHome
-        homeViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
         return root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        if(Constants.authenticateCustom != null){
+            binding.tvIdentificacion.text = Constants.authenticateCustom.identificacion
+            binding.tvNombre.text = Constants.authenticateCustom.nombre
+            binding.tvUsuario.text = Constants.authenticateCustom.usuario
+        }
     }
 
     override fun onDestroyView() {

@@ -8,6 +8,7 @@ import com.interrapidisimo.android.auth.data.provider.remote.model.StoreAppContr
 import com.interrapidisimo.android.auth.data.provider.remote.model.toAuthenticateCustom
 import com.interrapidisimo.android.auth.data.provider.remote.server.DataSourceRemoteContract
 import com.interrapidisimo.android.core.utils.ConnectionManager
+import com.interrapidisimo.android.core.utils.Constants
 import com.interrapidisimo.android.core.valueObjet.ResourceState
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.channelFlow
@@ -77,6 +78,7 @@ class RepositoryImpl @Inject constructor(private val dataSourceRemote: DataSourc
 
                 is ResourceState.SuccessState -> {
                     val auth: AuthenticateCustom = response.data.toAuthenticateCustom()
+                    Constants.authenticateCustom = auth
 
                     send(ResourceState.SuccessState(auth))
                 }

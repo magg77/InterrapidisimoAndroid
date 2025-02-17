@@ -162,9 +162,9 @@ data class AccionesMenu(
 //custom object Authenticate
 @Parcelize
 data class AuthenticateCustom(
-    @SerializedName("identificacion") val identificacion: String,
-    @SerializedName("usuario") val usuario: String,
-    @SerializedName("nombre") val nombre: String
+    @SerializedName("identificacion") val identificacion: String = "",
+    @SerializedName("usuario") val usuario: String = "",
+    @SerializedName("nombre") val nombre: String = ""
 ): Parcelable
 
 fun Authenticate.toAuthenticateCustom(): AuthenticateCustom = AuthenticateCustom(

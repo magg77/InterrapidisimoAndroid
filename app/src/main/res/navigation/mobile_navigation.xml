@@ -7,19 +7,19 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.interrapidisimo.android.ui.home.HomeFragment"
+        android:name="com.interrapidisimo.android.home.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="com.interrapidisimo.android.ui.dashboard.DashboardFragment"
+        android:name="com.interrapidisimo.android.localidades.LocalidadesFragment"
         android:label="@string/title_dashboard"
         tools:layout="@layout/fragment_dashboard" />
 
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="com.interrapidisimo.android.ui.notifications.NotificationsFragment"
+        android:name="com.interrapidisimo.android.tablas.TablasFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
 </navigation>

@@ -136,8 +136,6 @@ class AuthFragment : Fragment() {
 
     private fun authenticateUser(nameApp: String, user: String, password: String) {
 
-        Log.i("authenticateAppViewModel", "desde fragment = $hasValidationLogin")
-
         authenticateAppViewModel.authenticate(nameApp, user, password)
 
         viewLifecycleOwner.lifecycleScope.launch {

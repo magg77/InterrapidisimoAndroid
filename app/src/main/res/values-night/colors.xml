@@ -44,7 +44,7 @@
     <color name="textColor">#FFFFFF</color>
     <color name="textColorPrimary">#B1DB00</color>
     <color name="textColorSecondary">#B3FFFFFF</color>
-    <color name="textColorHintDisabled">#80FFFFFF</color>
+    <color name="textColorHintDisabled">#80EBEBEB</color>
 
     <!--colors icons-->
     <color name="textColorActiveIcons">#B1DB00</color>

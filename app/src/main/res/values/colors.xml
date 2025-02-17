@@ -44,7 +44,7 @@
     <color name="textColor">#0E0221</color>
     <color name="textColorPrimary">#DE9D0000</color>
     <color name="textColorSecondary">#8A000000</color>
-    <color name="textColorHintDisabled">#61000000</color>
+    <color name="textColorHintDisabled">#aaaaaa</color>
 
     <!--colors icons-->
     <color name="textColorActiveIcons">#8A000000</color>
