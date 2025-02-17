@@ -1,7 +1,7 @@
 # 📱 Proyecto de Aplicación Android
 
 # Screenshots
-![Test Image 2](https://github.com/magg77/MoviesHD/blob/develop/screens/App-MovieHD.jpg)
+![Test Image 2](https://github.com/magg77/InterrapidisimoAndroid/blob/develop/screens/app.png)
 
 # 🛠 Requisitos
 Movie app developed in Kotlin to be run on Android mobile devices. Before running the project, make sure you have the following installed:
