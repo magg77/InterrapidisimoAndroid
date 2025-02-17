@@ -66,13 +66,13 @@ class LocalitiesFragment : Fragment() {
 
     private fun setupLayoutsAdapter() {
 
-        val layoutManager = GridLayoutManager(requireContext(), 2)
-        layoutManager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
+        val layoutManager = GridLayoutManager(requireContext(), 1)
+        /*layoutManager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
             override fun getSpanSize(position: Int): Int {
                 val adapter = binding.rvHomeFragment.adapter as? AdapterLocalities
                 return if (adapter?.getItemViewType(position) == AdapterLocalities.VIEW_TYPE_HEADER) 2 else 1
             }
-        }
+        }*/
         binding.rvHomeFragment.setHasFixedSize(true)
         binding.rvHomeFragment.isNestedScrollingEnabled = false // Deshabilita el scrolling del RecyclerView dentro del NestedScrollView
         binding.rvHomeFragment.overScrollMode = View.OVER_SCROLL_NEVER

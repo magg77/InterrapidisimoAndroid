@@ -1,7 +1,9 @@
 package com.interrapidisimo.android.auth.ui
 
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
+import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -11,6 +13,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -232,14 +235,36 @@ class AuthenticateFragment : Fragment() {
     }
 
     private fun showAlertDialog(context: Context, message: String) {
-        MaterialAlertDialogBuilder(context)
-            .setTitle("Información de interes")
+
+        val dialog = MaterialAlertDialogBuilder(context)
+            .setTitle("Información de interés")
             .setMessage(message)
             .setPositiveButton("Aceptar") { dialog, _ ->
-                dialog.dismiss() // Cierra el diálogo
+                dialog.dismiss()
             }
             .setCancelable(false)
-            .show()
+            .create() // Usamos `create()` en lugar de `show()` para obtener el objeto Dialog.
+
+
+        dialog.setOnShowListener {
+            val positiveButton: Button = dialog.getButton(DialogInterface.BUTTON_POSITIVE)
+
+            // Obtener colores de res/values/colors.xml
+            val backgroundColor = ContextCompat.getColor(context, R.color.textColorActiveIcons)
+            val textColor = ContextCompat.getColor(context, R.color.textColorActiveIcons)
+
+            // Cambiar color de texto
+            positiveButton.setTextColor(textColor)
+
+            // Cambiar fondo usando GradientDrawable
+            val backgroundDrawable = GradientDrawable()
+            backgroundDrawable.setTint(backgroundColor) // Color de fondo del botón
+            backgroundDrawable.cornerRadius = 20f  // Esquinas redondeadas
+
+            positiveButton.background = backgroundDrawable
+        }
+
+        dialog.show()
     }
 
 

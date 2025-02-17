@@ -23,6 +23,9 @@
     <string name="nombre_aplicaci_n">Nombre Aplicación</string>
     <string name="tablas">Tablas</string>
     <string name="localidades">Localidades</string>
+    <string name="identificaci_n">Identificación:</string>
+    <string name="id_centro_servicio">Id Centro Servicio:</string>
+    <string name="localidad">Localidad:</string>
 
 
 </resources>
