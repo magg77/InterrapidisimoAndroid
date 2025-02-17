@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation_main_app"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.interrapidisimo.android.home.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_localities"
+            app:destination="@id/navigation_localities" />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_tables"
+            app:destination="@id/navigation_tables" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_localities"
+        android:name="com.interrapidisimo.android.localities.LocalitiesFragment"
+        android:label="@string/title_localities"
+        tools:layout="@layout/fragment_localities" />
+
+    <fragment
+        android:id="@+id/navigation_tables"
+        android:name="com.interrapidisimo.android.tables.TablesFragment"
+        android:label="@string/title_tables"
+        tools:layout="@layout/fragment_tables" />
+</navigation>

@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">InterRapidisimo</string>
     <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_localities">Localidades</string>
+    <string name="title_tables">Tablas</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">Inicia sesión</string>
     <string name="next">Login</string>
@@ -21,6 +21,8 @@
     <string name="not_available_update_app">Tienes tu App actualizada. ¡Sigue disfrutando!</string>
     <string name="icon">Icon</string>
     <string name="nombre_aplicaci_n">Nombre Aplicación</string>
+    <string name="tablas">Tablas</string>
+    <string name="localidades">Localidades</string>
 
 
 </resources>
