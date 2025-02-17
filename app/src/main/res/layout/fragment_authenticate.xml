@@ -122,8 +122,8 @@
                 android:layout_marginTop="32dp"
                 android:ems="10"
                 android:hint="@string/password"
-                android:inputType="text"
-                android:padding="8dp"/>
+                android:inputType="textPassword"
+                android:padding="8dp" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
