@@ -3,8 +3,9 @@ package com.interrapidisimo.android.core.di
 import com.google.gson.GsonBuilder
 import com.interrapidisimo.android.BuildConfig
 import com.interrapidisimo.android.core.utils.Constants
-import com.interrapidisimo.android.auth.data.provider.remote.server.WebServiceAuth
+import com.interrapidisimo.android.auth.data.provider.remote.server.WebServiceAuthenticate
 import com.interrapidisimo.android.core.valueObjet.CustomHeadersInterceptor
+import com.interrapidisimo.android.localities.data.provider.remote.server.WebServiceLocalities
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -74,9 +75,16 @@ object RetrofitClientModule {
 
     @Singleton
     @Provides
-    fun provideWebServiceInterface(retrofit: Retrofit): WebServiceAuth {
-        return retrofit.create(WebServiceAuth::class.java)
+    fun webServiceAuthenticate(retrofit: Retrofit): WebServiceAuthenticate {
+        return retrofit.create(WebServiceAuthenticate::class.java)
     }
+
+    @Singleton
+    @Provides
+    fun webServiceLocalities(retrofit: Retrofit): WebServiceLocalities{
+        return retrofit.create(WebServiceLocalities::class.java)
+    }
+
 
 
 }

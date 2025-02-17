@@ -5,8 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.interrapidisimo.android.R
 import com.interrapidisimo.android.core.utils.Constants
 import com.interrapidisimo.android.databinding.FragmentHomeBinding
 
@@ -23,8 +24,6 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val homeViewModel =
-            ViewModelProvider(this).get(HomeViewModel::class.java)
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
@@ -42,11 +41,19 @@ class HomeFragment : Fragment() {
         }
 
         binding.btnTablas.setOnClickListener {
-            findNavController().navigate(HomeFragmentDirections.actionNavigationHomeToNavigationTables())
+            //findNavController().navigate(HomeFragmentDirections.actionNavigationHomeToNavigationTables())
+
+            val bottomNav = requireActivity().findViewById<BottomNavigationView>(R.id.nav_view)
+            bottomNav.selectedItemId = R.id.navigation_tables  // ID del item en el menú
+
         }
 
         binding.btnLocalidades.setOnClickListener {
-            findNavController().navigate(HomeFragmentDirections.actionNavigationHomeToNavigationLocalities())
+            //findNavController().navigate(HomeFragmentDirections.actionNavigationHomeToNavigationLocalities())
+
+            val bottomNav = requireActivity().findViewById<BottomNavigationView>(R.id.nav_view)
+            bottomNav.selectedItemId = R.id.navigation_localities  // ID del item en el menú
+
         }
     }
 

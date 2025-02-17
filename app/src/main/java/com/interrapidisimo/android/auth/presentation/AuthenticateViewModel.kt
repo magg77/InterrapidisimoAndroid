@@ -45,8 +45,6 @@ class AuthenticateViewModel @Inject constructor(
 
     fun authenticate(nameApp: String, user: String, password: String) = viewModelScope.launch {
 
-        Log.i("authenticateAppViewModel", "desde viewmodel")
-
         // Validación de campos
         if (nameApp.isBlank()) {
             _uiStateAuthenticate.value = ResourceState.FailureState("El nombre de la aplicación no puede estar vacío")
@@ -75,6 +73,7 @@ class AuthenticateViewModel @Inject constructor(
             .launchIn(viewModelScope)
     }
 
+    // saved local authenticate
     fun saveAuthenticateBdSQLite(auth: AuthenticateCustom) {
         viewModelScope.launch {
             usecaseAuthenticateLocal.insertAuthenticateUseCase(auth)

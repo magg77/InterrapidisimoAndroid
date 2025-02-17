@@ -1,8 +1,8 @@
 package com.interrapidisimo.android.auth.data.provider.remote.server
 
 import android.util.Log
-import com.interrapidisimo.android.auth.data.provider.remote.model.Authenticate
 import com.interrapidisimo.android.auth.data.provider.remote.model.AuthenticateRequest
+import com.interrapidisimo.android.auth.data.provider.remote.model.AuthenticateResponse
 import com.interrapidisimo.android.core.valueObjet.ResourceState
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -13,8 +13,8 @@ import retrofit2.HttpException
 import retrofit2.Response
 import javax.inject.Inject
 
-class DataSourceAuthRemoteImpl @Inject constructor(private val webServiceAuth: WebServiceAuth) :
-    DataSourceAuthRemote {
+class DataSourceRemoteAuthenticateImpl @Inject constructor(private val serviceAuthenticateRemote: WebServiceAuthenticate) :
+    DataSourceRemoteAuthenticate {
 
     override suspend fun getVpStoreAppControlDataSource(): ResourceState<ResponseBody> {
 
@@ -22,7 +22,7 @@ class DataSourceAuthRemoteImpl @Inject constructor(private val webServiceAuth: W
 
             try {
 
-                val response = webServiceAuth.getVpStoreAppControl()
+                val response = serviceAuthenticateRemote.getVpStoreAppControl()
 
                 if (response.isSuccessful) {
 
@@ -46,6 +46,7 @@ class DataSourceAuthRemoteImpl @Inject constructor(private val webServiceAuth: W
                         500 -> errorBody ?: "Error interno del servidor"
                         else -> "Error desconocido: ${response.code()}"
                     }
+
                     ResourceState.FailureState(errorMessage)
 
                 }
@@ -64,19 +65,18 @@ class DataSourceAuthRemoteImpl @Inject constructor(private val webServiceAuth: W
 
     }
 
-    override suspend fun authenticateDataSourceRemote(request: AuthenticateRequest): ResourceState<Authenticate> {
+    override suspend fun authenticateDataSourceRemote(request: AuthenticateRequest): ResourceState<AuthenticateResponse> {
 
         return withContext(Dispatchers.IO) {
 
             try {
 
-                Log.i("requestAuthentica", "${request.user} --- ${request.password}")
-
-                val response: Response<Authenticate> = webServiceAuth.authenticate(request)
+                val response: Response<AuthenticateResponse> = serviceAuthenticateRemote.authenticate(request)
 
                 if (response.isSuccessful) {
 
                     val body = response.body()
+
                     if (body != null) {
                         ResourceState.SuccessState(body) // ✅ Éxito con datos
                     } else {
@@ -96,6 +96,7 @@ class DataSourceAuthRemoteImpl @Inject constructor(private val webServiceAuth: W
                         500 -> errorBody ?: "Error interno del servidor"
                         else -> "Error desconocido: ${response.code()}"
                     }
+
                     ResourceState.FailureState(errorMessage)
 
                 }

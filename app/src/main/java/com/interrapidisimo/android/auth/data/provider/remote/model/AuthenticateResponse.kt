@@ -5,7 +5,7 @@ import kotlinx.parcelize.Parcelize
 import kotlinx.parcelize.RawValue
 
 @Parcelize
-data class Authenticate(
+data class AuthenticateResponse(
     @SerializedName("Apellido2")
     val apellido2: String,
     @SerializedName("Apellido8")
@@ -167,7 +167,7 @@ data class AuthenticateCustom(
     @SerializedName("nombre") val nombre: String = ""
 ): Parcelable
 
-fun Authenticate.toAuthenticateCustom(): AuthenticateCustom = AuthenticateCustom(
+fun AuthenticateResponse.toAuthenticateCustom(): AuthenticateCustom = AuthenticateCustom(
     identificacion = this.identificacion,
     usuario = this.usuario,
     nombre = this.nombre

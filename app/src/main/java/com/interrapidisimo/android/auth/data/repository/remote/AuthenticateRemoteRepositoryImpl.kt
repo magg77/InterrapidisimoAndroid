@@ -6,7 +6,7 @@ import com.interrapidisimo.android.auth.data.provider.remote.model.AuthenticateC
 import com.interrapidisimo.android.auth.data.provider.remote.model.AuthenticateRequest
 import com.interrapidisimo.android.auth.data.provider.remote.model.StoreAppControl
 import com.interrapidisimo.android.auth.data.provider.remote.model.toAuthenticateCustom
-import com.interrapidisimo.android.auth.data.provider.remote.server.DataSourceAuthRemote
+import com.interrapidisimo.android.auth.data.provider.remote.server.DataSourceRemoteAuthenticate
 import com.interrapidisimo.android.core.utils.ConnectionManager
 import com.interrapidisimo.android.core.utils.Constants
 import com.interrapidisimo.android.core.valueObjet.ResourceState
@@ -14,7 +14,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.channelFlow
 import javax.inject.Inject
 
-class AuthenticateRemoteRepositoryImpl @Inject constructor(private val dataSourceRemote: DataSourceAuthRemote) :
+class AuthenticateRemoteRepositoryImpl @Inject constructor(private val dataSourceRemote: DataSourceRemoteAuthenticate) :
     AuthenticateRemoteRepository {
 
     override suspend fun getVpStoreAppControlRepo(context: Context): Flow<ResourceState<StoreAppControl>> =
@@ -73,6 +73,9 @@ class AuthenticateRemoteRepositoryImpl @Inject constructor(private val dataSourc
                 mac = "",
                 path = ""
             )
+
+            //emitir estado de carga
+            send(ResourceState.LoadingState())
 
             when (val response = dataSourceRemote.authenticateDataSourceRemote(request)) {
 
